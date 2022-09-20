@@ -1,0 +1,36 @@
+/* body{
+    background-color: rgb(109, 216, 222);
+} */
+/* div{
+    padding: 10px;
+} */
+
+/* h2{
+    text-align: center;
+} */
+
+label{
+    margin: 10px 0px;
+}
+
+.container{
+    width: 100%;
+    
+    /* margin: auto; */
+}
+
+.registrationForm{
+    /* background-color: white; */
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    height: 500px;
+}
+
+.center{
+    text-align: center;
+}
+.btn{
+    width: 200px;
+    margin-top: 20px;
+}

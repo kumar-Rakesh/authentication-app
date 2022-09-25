@@ -1,24 +1,31 @@
-import React, { Component } from 'react'
-// import { BrowserRouter as Router, Route } from 'react-router-dom'
+import React from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 import Navbar from './components/Navbar'
 import Landing from './components/Landing'
-// import Login from './components/Login'
-// import Profile from './components/Profile'
-import Registration from './components/Registration';
+import Login from './components/Login'
+import Register from './components/Register'
+import Profile from './components/Profile'
+import EditProfile from './components/EditProfile'
 
-class App extends Component {
-    render() {
-        return (
+function App() {
+
+    return (
+        <Router>
             <div className="App">
-                {/* <Navbar />
-                <Landing /> */}
-                <div className="container">
-                    <Registration />
-                </div>
+                <Navbar />
+                <Routes>
+                    <Route exact path="/" element={<Landing />} />
+                    <Route exact path="/register" element={<Register />} />
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/profile" element={<Profile />} />
+                    <Route exact path="/editProfile" element={<EditProfile />} />
+                </Routes>
             </div>
-        )
-    }
+        </Router>
+    )
 }
+
 
 export default App

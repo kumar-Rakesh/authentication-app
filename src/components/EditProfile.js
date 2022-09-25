@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as api from '../api/api'
+import FileBase64 from 'react-file-base64'
 
 function EditProfile() {
 
@@ -37,6 +38,10 @@ function EditProfile() {
     const onChangeConfirmPassword = (e) => {
         e.preventDefault()
         setUser({ ...user, confirmPassword: e.target.value })
+    }
+
+    const onDone = ({ base64 }) => {
+        setUser({ ...user, image: base64 })
     }
 
     const handleSubmit = (e) => {
@@ -111,6 +116,17 @@ function EditProfile() {
                                 onChange={onChangeConfirmPassword}
                             />
                         </div>
+                        <br />
+                        <div className="form-group">
+                            <label htmlFor="confirmPassword">Image</label>
+                            &nbsp;
+                            <FileBase64
+                                className="form-control"
+                                multiple={false}
+                                onDone={onDone}
+                            />
+                        </div>
+                        <br />
                         <button
                             type="submit"
                             className="btn btn-lg btn-primary btn-block"

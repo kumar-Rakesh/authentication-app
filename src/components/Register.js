@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as api from '../api/api'
+import FileBase64 from 'react-file-base64'
 
 function Register() {
 
 
-  const [user, setUser] = useState({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' })
+  const [user, setUser] = useState({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '', image: '' })
   const navigate = useNavigate()
 
   const onChangeFirstName = (e) => {
@@ -31,6 +32,10 @@ function Register() {
   const onChangeConfirmPassword = (e) => {
     e.preventDefault()
     setUser({ ...user, confirmPassword: e.target.value })
+  }
+
+  const onDone = ({ base64 }) => {
+    setUser({ ...user, image: base64 })
   }
 
   const handleSubmit = (e) => {
@@ -67,7 +72,7 @@ function Register() {
                 type="text"
                 className="form-control"
                 name="last_name"
-                placeholder="Enter your lastname name"
+                placeholder="Enter your last name"
                 value={user.lastName}
                 onChange={onChangeLastName}
               />
@@ -105,6 +110,17 @@ function Register() {
                 onChange={onChangeConfirmPassword}
               />
             </div>
+            <br />
+            <div className="form-group">
+              <label htmlFor="confirmPassword">Image</label>
+              &nbsp;
+              <FileBase64
+                className="form-control"
+                multiple={false}
+                onDone={onDone}
+              />
+            </div>
+            <br />
             <button
               type="submit"
               className="btn btn-lg btn-primary btn-block"
